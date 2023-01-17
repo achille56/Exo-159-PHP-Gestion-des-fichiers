@@ -5,6 +5,11 @@
  * 2. Afficher le contenu du fichier dans un div
  */
 // TODO Votre code ici.
+$contenu = file_get_contents("lire.txt");
+    echo "<div> $contenu </div>";
+
+    echo "<br><br>";
+
 
 /**
  * 3. Faites la même chose à l'aide d'une boucle et de la fonction fgets(), récupérez les lignes du fichier une à une.
@@ -12,15 +17,31 @@
  * --> N'oubliez pas de fermer votre fichier.
  */
 // TODO Votre code ici.
+$file = fopen("lire.txt", "r");// mode "r" pour lecture seule
+while(!feof($file)) {
+    $ligne = fgets($file);
+    echo "<span>$ligne</span><br>";
+}
+fclose($file);
 
 
+
+echo "<br><br>";
 /**
  * 5. Récupérez les caractères un à un et n'affichez le caractère que s'il s'agit d'autre chose qu'un espace, qu'un point ou qu'un point d'interrogation / exclamation.
  * --> N'oubliez pas de fermer votre fichier.
  */
 // TODO Votre code ici.
+$file = fopen("lire.txt", "r");// mode "r" pour lecture seule
+while(!feof($file)) { // on parcourt chaque caractère du fichier jusqu'à la fin.
+    $caractere = fgetc($file);// "fgetc" permet de lire un fichier jusqu'a la position d'un caratère donner.
+    if($caractere != " " && $caractere != "." && $caractere != "?" && $caractere != "!"){
+        echo $caractere;
+    }
+}
+fclose($file);
 
-
+echo "<br><br>";
 /**
  * 6. Ne cherchez pas la logique dans cet exo ^^
  */
